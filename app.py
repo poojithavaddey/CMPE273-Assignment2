@@ -77,22 +77,22 @@ def upload_scantron(test_id):
 def get_submissions(test_id):
     t_id = request.view_args['test_id']
     data = t.get_sub_data(t_id)
-    res =[]
+    res =dict()
     scr= 0
     count = 0
-    sub = {}
+    subb = {}
     ans = eval(data[0][2])
-    sub = eval(data[0][7])
-    #sub = dict(sub)
-    print("TEST: ", test_)
+    subb = eval(data[0][7])
+    print(type(ans))
+    print(type(subb))
 
     for i  in ans.keys():
-        print("Print i", i, ans[i], sub[i])
+        print("Print i", i, ans[i], subb[i])
         res[i] =    {
                     "actual": ans[i],
-                    "expected": sub[i]
+                    "expected": subb[i]
                     }
-        if ans[i] == sub[i]:
+        if ans[i] == subb[i]:
             scr+=1
         count += 1
 
